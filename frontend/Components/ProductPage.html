@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../styles/ProductPage.css" />
+  <link rel="stylesheet" href="../Components/styles/ProductPage.css" />
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -122,7 +122,7 @@
 
   <!-- JS to fetch product data -->
   <script>
-  fetch('../data/products.json')
+  fetch('../../backend/data/products.json')
     .then(res => res.json())
     .then(products => {
       const urlParams = new URLSearchParams(window.location.search);
@@ -149,7 +149,7 @@
             </ul>
           </div>
           <div class="price">Цена: ${product.price} лв.</div>
-          <a href="../Cart.html">
+          <a href="../Components/Cart.html">
             <button class="buy-button" id="buyNowBtn">🛒 Купи сега</button>
           </a>
         </div>
@@ -170,7 +170,7 @@
         }
 
         localStorage.setItem("cart", JSON.stringify(cart));
-        window.location.href = "../Cart.html";
+        window.location.href = "../Components/Cart.html";
       });
 
       
@@ -180,6 +180,6 @@
       console.error('Error loading product data:', err);
     });
 </script>
-<script src="../logic/searchbar.js"></script>
+<script src="../Pages/logic/searchbar.js"></script>
 </body>
 </html>
