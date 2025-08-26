@@ -1,0 +1,87 @@
+ .category-title {
+      background-color:rgb(86, 143, 255);
+      text-align: center;
+      font-size: 25px;
+      padding: 30px;
+      color: white;
+    }
+.category-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 50px;
+      justify-content: center;
+      padding: 150px 150px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        background-color: #ffffff;
+    }
+.category-item {
+      background-color: #eaeaea;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      width: 200px;
+      text-align: center;
+      padding: 20px;
+      flex: 0 0 auto;
+    }
+.category-item:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+      background-color: rgb(86, 143, 255);
+      color: white;
+    }
+.category-item h3 {
+      font-size: 18px;
+      margin: 10px 0;
+    }
+.category-item span {
+      font-weight: bold;
+      color: #000746;
+    }
+.category-item i {
+      font-size: 50px;
+      color: #000746;
+      margin-bottom: 10px;
+    }
+.category-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 29, 194, 0.971);
+      border: none;
+      color: rgb(255, 255, 255);
+      padding: 10px;
+      cursor: pointer;
+      z-index: 1;
+    }
+.category-button:hover {
+      background-color: #000a94;
+      transition: 0.3s;
+    }
+    .category-button i {
+      margin-left: 5px;
+      font-size: 16px;
+      color: #ffffff;
+    }
+.category-button::after {
+      content: '';
+        display: inline-block;
+        width: 100%;
+        height: 0;
+        bottom: -5px;
+        left: 0;
+        background-color: #000000;
+        transition: 0.3s;
+        transition-timing-function: ease-in-out;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid #ffffff;
+        margin-left: 5px;
+        transform: scaleX(0);
+    }
+.category-button:hover::after {
+      transform: scaleX(1);
+    }
+.category-list::-webkit-scrollbar {
+      display: none;
+    }

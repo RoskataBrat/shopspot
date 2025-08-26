@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Components/styles/Cart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="top">
+            <div class="logo"><a href="../index.html"><img src="../images/logo.png"></a></div>
+            <div class="searchBar">
+                <input type="text" placeholder="Търсене на продукти...">
+                <button class="searchButton"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+            <div class="phones">
+                <div class="phone"><i class="fas fa-phone"></i> +359 123 456 789</div>
+                <div class="phone"><i class="fas fa-envelope"></i>
+            </div>
+        </div>
+    <div class="main-header">
+        <div class="first-header" id="firstHeader">
+            <div class="second-header">
+                <div class="section-buttons">
+                    <div class="dropdown">
+                        <button class="header-button">Техника<i class='fas fa-angle-down'></i></button>
+                        <div class="dropdown-content">
+                            <a href="../Pages/Smartphones.html">Смартфони</a>
+                            <a href="../Pages/Laptops.html">Лаптопи</a>
+                            <a href="../Pages/PC.html">Компютри</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="header-button">Дрехи<i class='fas fa-angle-down'></i></button>
+                        <div class="dropdown-content">
+                            <a href="../Pages/T-Shirts.html">Тениски</a>
+                            <a href="../Pages/Shoes.html">Обувки</a>
+                            <a href="../Pages//Hats.html">Шапки</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="header-button">Хранителни стоки<i class='fas fa-angle-down'></i></button>
+                        <div class="dropdown-content">
+                            <a href="#">Месо</a>
+                            <a href="#">Плодове и зеленчуци</a>
+                            <a href="#">Хляб</a>
+                            <a href="#">Млечни продукти</a>
+                            <a href="#">Десерти</a>
+                            <a href="#">Напитки</a>
+                        </div>
+                    </div>
+                     <div class="dropdown">
+                        <button class="header-button">Аксесоарии<i class='fas fa-angle-down'></i></button>
+                        <div class="dropdown-content">
+                            <a href="#">Периферия</a>
+                            <a href="#">Козметика</a>
+                            <a href="#">Мода</a>
+                        </div>
+                    </div>
+                    <button class="header-button">Контакти</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="cart">
+        <div class="darken-mode">
+            <h1>Вашата Количка</h1>
+        </div>
+        <div class="cart-items" id="cartItemsContainer">
+            <!-- JS will populate items here -->
+        </div>
+    </section>
+
+        <div class="cart-actions" style="text-align: center; margin: 30px 0;">
+            <a href="../Components/Payment.html">
+                <button class="payment-button">Плащане</button>
+            </a>
+        </div>
+
+    <div class="cart-actions" style="text-align: center; margin: 30px 0;">
+        <a href="../Components/Payment.html">
+            <button class="payment-button">Плащане</button>
+        </a>
+    </div>
+
+    <script src="../Components/logic/Cart.js"></script>
+
+</body>
+</html>

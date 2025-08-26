@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../Components/styles/ProductPage.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+  <title>Product Page</title>
+</head>
+<body>
+  <!-- TOP BAR -->
+  <div class="top">
+    <div class="logo"><a href="../index.html"><img src="../images/logo.png" alt="Logo" /></a></div>
+    <div class="searchBar">
+      <input type="text" placeholder="Търсене на продукти..." />
+      <button class="searchButton"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </div>
+    <div class="phones">
+      <div class="phone"><i class="fas fa-phone"></i> +359 123 456 789</div>
+      <div class="phone"><i class="fas fa-envelope"></i> info@example.com</div>
+    </div>
+  </div>
+
+  <!-- HEADER MENU -->
+  <div class="main-header">
+    <div class="first-header" id="firstHeader">
+      <div class="second-header">
+        <div class="section-buttons">
+          <div class="dropdown">
+            <button class="header-button">Техника <i class="fas fa-angle-down"></i></button>
+            <div class="dropdown-content">
+              <a href="#">Смартфони</a>
+              <a href="#">Лаптопи</a>
+              <a href="#">Компютри</a>
+            </div>
+          </div>
+          <div class="dropdown">
+            <button class="header-button">Дрехи <i class="fas fa-angle-down"></i></button>
+            <div class="dropdown-content">
+              <a href="#">Тениски</a>
+              <a href="#">Обувки</a>
+              <a href="#">Шапки</a>
+            </div>
+          </div>
+          <div class="dropdown">
+            <button class="header-button">Хранителни стоки <i class="fas fa-angle-down"></i></button>
+            <div class="dropdown-content">
+              <a href="#">Месо</a>
+              <a href="#">Плодове и зеленчуци</a>
+              <a href="#">Хляб</a>
+              <a href="#">Млечни продукти</a>
+              <a href="#">Десерти</a>
+              <a href="#">Напитки</a>
+            </div>
+          </div>
+          <div class="dropdown">
+            <button class="header-button">Аксесоарии <i class="fas fa-angle-down"></i></button>
+            <div class="dropdown-content">
+              <a href="#">Периферия</a>
+              <a href="#">Козметика</a>
+              <a href="#">Мода</a>
+            </div>
+          </div>
+          <button class="header-button">Контакти</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCT SECTION -->
+  <section class="product-page" id="productPage">
+    <!-- Content will be dynamically inserted here -->
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="footer-col">
+          <h4>company</h4>
+          <ul>
+            <li><a href="#">about us</a></li>
+            <li><a href="#">our services</a></li>
+            <li><a href="#">privacy policy</a></li>
+            <li><a href="#">affiliate program</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>get help</h4>
+          <ul>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">shipping</a></li>
+            <li><a href="#">returns</a></li>
+            <li><a href="#">order status</a></li>
+            <li><a href="#">payment options</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>online shop</h4>
+          <ul>
+            <li><a href="#">watch</a></li>
+            <li><a href="#">bag</a></li>
+            <li><a href="#">shoes</a></li>
+            <li><a href="#">dress</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>follow us</h4>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS to fetch product data -->
+  <script>
+  fetch('../../backend/data/products.json')
+    .then(res => res.json())
+    .then(products => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = parseInt(urlParams.get('id'));
+
+      const product = products.find(p => p.id === productId);
+
+      if (!product) {
+        document.getElementById('productPage').innerHTML = '<p>Продуктът не е намерен.</p>';
+        return;
+      }
+
+      const section = document.getElementById('productPage');
+      section.innerHTML = `
+        <div class="product-image">
+          <img src="${product.image}" alt="${product.name}">
+        </div>
+        <div class="product-details">
+          <h1>${product.name}</h1>
+          <p>${product.description || "Описание не е налично."}</p>
+          <div class="features">
+            <ul>
+              ${(product.features || []).map(f => `<li>✔️ ${f}</li>`).join('')}
+            </ul>
+          </div>
+          <div class="price">Цена: ${product.price} лв.</div>
+          <a href="../Components/Cart.html">
+            <button class="buy-button" id="buyNowBtn">🛒 Купи сега</button>
+          </a>
+        </div>
+      `;
+      document.getElementById("buyNowBtn").addEventListener("click", () => {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        // Check if the product is already in cart
+        const existingProduct = cart.find(item => item.id === product.id);
+        if (!existingProduct) {
+          cart.push({
+            id: product.id,
+            name: product.name,
+            image: product.image,
+            price: product.price,
+            description: product.description || "",
+          });
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        window.location.href = "../Components/Cart.html";
+      });
+
+      
+    })
+    .catch(err => {
+      document.getElementById('productPage').innerHTML = '<p>Неуспешно зареждане на продукта.</p>';
+      console.error('Error loading product data:', err);
+    });
+</script>
+<script src="../Pages/logic/searchbar.js"></script>
+</body>
+</html>

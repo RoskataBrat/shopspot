@@ -1,0 +1,22 @@
+.profile-dropdown {
+  position: relative;
+  display: inline-block;
+}
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  min-width: 120px;
+  z-index: 1;
+}
+.profile-dropdown:hover .dropdown-content {
+  display: block;
+}

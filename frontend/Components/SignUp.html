@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <title>Регистрация</title>
+  <link rel="stylesheet" href="styles/SignUp.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+  <div class="auth-container">
+    <h2>Регистрация</h2>
+    <form id="registerForm">
+      <input type="text" id="registerName" placeholder="Име" required />
+      <input type="email" id="registerEmail" placeholder="Имейл" required />
+      <input type="password" id="registerPassword" placeholder="Парола" required />
+      <button type="submit">Регистрация</button>
+      <p>Имате акаунт? <a href="../Components/SignIn.html">Вход</a></p>
+    </form>
+    <div id="registerMessage" class="message"></div>
+  </div>
+
+  <script src="../Components/logic/SignUp.js"></script>
+</body>
+</html>

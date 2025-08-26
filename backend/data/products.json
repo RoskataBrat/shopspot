@@ -1,0 +1,78 @@
+[
+  {
+    "id": 1,
+    "name": "Redmi A3",
+    "price": 199.99,
+    "image": "/frontend/Pages/images/redmi a3.jpg",
+    "description": "Redmi A3 разполага с оперативна памет Android 14 и е отличен за ежедневна употреба."
+  },
+  {
+    "id": 2,
+    "name": "Nokia Smart",
+    "price": 299.99,
+    "image": "/frontend/Pages/images/keis_porshe.jpg",
+    "description": "Протектор за телефон Porsche серия с уникален дизайн и устойчив материал."
+  },
+  {
+    "id": 3,
+    "name": "Iphone 16",
+    "price": 399.99,
+    "image": "/frontend/Pages/images/Iphone-16-Black-1.png",
+    "description": "IPhone 16 с революционна камера и бърз процесор."
+  },
+  {
+    "id": 4,
+    "name": "Samsung Galaxy S23",
+    "price": 499.99,
+    "image": "/frontend/Pages/images/samsung-s23.avif",
+    "description": "Samsung Galaxy S23 с AMOLED дисплей и бързо зареждане."
+  },
+  {
+    "id": 5,
+    "name": "Huawei P30",
+    "price": 599.99,
+    "image": "/frontend/Pages/images/huawei-p30.jpg",
+    "description": "Huawei P30 с изключителна камера и дълъг живот на батерията."
+  },
+
+  
+
+  {
+    "id": 6,
+    "name": "Lenovo ThinkBook",
+    "price": 699.99,
+    "image": "/frontend/Pages/images/lenovo_thinkbook.jpg",
+    "description": "Lenovo ThinkBook с голям дисплей и мощна батерия."
+  },
+  {
+    "id": 7,
+    "name": "Lenovo ThinkBook",
+    "price": 699.99,
+    "image": "/frontend/Pages/images/lenovo_thinkbook.jpg",
+    "description": "Lenovo ThinkBook с голям дисплей и мощна батерия."
+  },
+  {
+    "id": 8,
+    "name": "Lenovo ThinkBook",
+    "price": 699.99,
+    "image": "/frontend/Pages/images/lenovo_thinkbook.jpg",
+    "description": "Lenovo ThinkBook с голям дисплей и мощна батерия."
+  },
+  {
+    "id": 9,
+    "name": "Lenovo ThinkBook",
+    "price": 699.99,
+    "image": "/frontend/Pages/images/lenovo_thinkbook.jpg",
+    "description": "Lenovo ThinkBook с голям дисплей и мощна батерия."
+  },
+  {
+    "id": 10,
+    "name": "Adidas Tshirt",
+    "price": 69.99,
+    "image": "/frontend/Pages/images/adidas-teniska.avif",
+    "description": "Lenovo ThinkBook с голям дисплей и мощна батерия."
+  }
+
+
+]
+

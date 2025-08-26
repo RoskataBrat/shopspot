@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Pages/styles/Fashion.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+      <script src="../Pages/logic/sidebar_products.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="top">
+            <div class="logo"><a href="../index.html"><img src="../images/logo.png"></a></div>
+            <div class="searchBar">
+                <input type="text" id="searchInput" placeholder="Търсене на продукти..." />
+                <button class="searchButton"><i class="fas fa-search"></i></button>
+            </div>
+            <div id="suggestions" class="suggestions"></div>
+
+            <div class="phones">
+                <div class="phone"><i class="fas fa-phone"></i> +359 123 456 789</div>
+                <div class="phone"><i class="fas fa-envelope"></i>
+            </div>
+        </div>
+    <div class="main-header">
+        <div class="first-header" id="firstHeader">
+            <div class="second-header">
+                <div class="section-buttons">
+                    <div class="dropdown">
+                        <button class="header-button">Техника<i class='fas fa-angle-down'></i></button>
+                        <div class="dropdown-content">
+                            <a href="../Pages/Smartphones.html">Смартфони</a>
+                            <a href="../Pages/Laptops.html">Лаптопи</a>
+                            <a href="../Pages/PC.html">Компютри</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="header-button">Дрехи<i class='fas fa-angle-down'></i></button>
+                        <div class="dropdown-content">
+                            <a href="../Pages/T-Shirts.html">Тениски</a>
+                            <a href="../Pages/Shoes.html">Обувки</a>
+                            <a href="../Pages/Hats.html">Шапки</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="header-button">Хранителни стоки<i class='fas fa-angle-down'></i></button>
+                        <div class="dropdown-content">
+                            <a href="#">Месо</a>
+                            <a href="#">Плодове и зеленчуци</a>
+                            <a href="#">Хляб</a>
+                            <a href="#">Млечни продукти</a>
+                            <a href="#">Десерти</a>
+                            <a href="#">Напитки</a>
+                        </div>
+                    </div>
+                     <div class="dropdown">
+                        <button class="header-button">Аксесоарии<i class='fas fa-angle-down'></i></button>
+                        <div class="dropdown-content">
+                            <a href="#">Периферия</a>
+                            <a href="#">Козметика</a>
+                            <a href="#">Мода</a>
+                        </div>
+                    </div>
+                    <button class="header-button">Контакти</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <<section>
+    <div class="sidebar">
+        <h2>Филтри</h2>
+
+        <h3>Категории</h3>
+        <label><input type="checkbox" name="category" value="Смартфони"> Samsung</label>
+        <label><input type="checkbox" name="category" value="Лаптопи"> IPhone</label>
+        <label><input type="checkbox" name="category" value="Компютри"> Xiaomi</label>
+        <label><input type="checkbox" name="category" value="Тениски"> Huawei</label>
+        <label><input type="checkbox" name="category" value="Обувки"> Nokia</label>
+
+
+        <h3>Цена</h3>
+        <label>Мин: <input type="number" name="min-price" min="0"></label>
+        <label>Макс: <input type="number" name="max-price" min="0"></label>
+        <button class="apply-filters">Приложи</button>
+
+        <h3>Сортиране по азбука</h3>
+        <div class="alphabet-filter">
+            <button onclick="sortAZ()">А-Я</button>
+            <button onclick="sortZA()">Я-А</button>
+        </div>
+    </div>
+
+    <div class="products" id="productContainer">
+        <div class="product" onclick="viewProduct(1)">
+            <img src="../Pages/images/redmi a3.jpg">
+            <h4>Redmi A3</h4>
+            <h4>Цена: 199,99 лв.</h4>
+            <p>Redmi A3 разполага с оперативна памет Android 14...</p>
+        </div>
+        <div class="product" onclick="viewProduct(2)">
+            <img src="../Pages/images/keis_porshe.jpg">
+            <h4>Nokia Smart</h4>
+            <h4>Цена: 299,99 лв.</h4>
+            <p>Samsung Galaxy S23 разполага с оперативна памет Android 14...</p>
+        </div>
+        <div class="product" onclick="viewProduct(3)">
+            <img src="../Pages/images/Iphone-16-Black-1.png">
+            <h4>Iphone 16</h4>
+            <h4>Цена: 399,99 лв.</h4>
+            <p>Huawei P30 разполага с оперативна памет Android 14...</p>
+        </div>
+        <div class="product" onclick="viewProduct(4)">
+            <img src="../Pages/images/samsung-s23.avif">
+            <h4>Samsung Galaxy S23</h4>
+            <h4>Цена: 499,99 лв.</h4>
+            <p>Nokia разполага с оперативна памет Android 14...</p>
+        </div>
+        <div class="product" onclick="viewProduct(5)">
+            <img src="../Pages/images/huawei-p30.jpg">
+            <h4>Huawei P30</h4>
+            <h4>Цена: 599,99 лв.</h4>
+            <p>Nokia разполага с оперативна памет Android 14...</p>
+        </div>
+    </div>
+</section>
+<footer class="footer">
+  	 <div class="container">
+  	 	<div class="row">
+  	 		<div class="footer-col">
+  	 			<h4>company</h4>
+  	 			<ul>
+  	 				<li><a href="#">about us</a></li>
+  	 				<li><a href="#">our services</a></li>
+  	 				<li><a href="#">privacy policy</a></li>
+  	 				<li><a href="#">affiliate program</a></li>
+  	 			</ul>
+  	 		</div>
+  	 		<div class="footer-col">
+  	 			<h4>get help</h4>
+  	 			<ul>
+  	 				<li><a href="#">FAQ</a></li>
+  	 				<li><a href="#">shipping</a></li>
+  	 				<li><a href="#">returns</a></li>
+  	 				<li><a href="#">order status</a></li>
+  	 				<li><a href="#">payment options</a></li>
+  	 			</ul>
+  	 		</div>
+  	 		<div class="footer-col">
+  	 			<h4>online shop</h4>
+  	 			<ul>
+  	 				<li><a href="#">watch</a></li>
+  	 				<li><a href="#">bag</a></li>
+  	 				<li><a href="#">shoes</a></li>
+  	 				<li><a href="#">dress</a></li>
+  	 			</ul>
+  	 		</div>
+  	 		<div class="footer-col">
+  	 			<h4>follow us</h4>
+  	 			<div class="social-links">
+  	 				<a href="#"><i class="fab fa-facebook-f"></i></a>
+  	 				<a href="#"><i class="fab fa-twitter"></i></a>
+  	 				<a href="#"><i class="fab fa-instagram"></i></a>
+  	 				<a href="#"><i class="fab fa-linkedin-in"></i></a>
+  	 			</div>
+  	 		</div>
+  	 	</div>
+  	 </div>
+  </footer>
+  <script src="../Pages/logic/select_product.js"></script>
+    <script src="../Pages/logic/searchbar.js"></script>
+</body>
+</html>

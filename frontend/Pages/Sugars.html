@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../frontend/styles/index.css">
+    <link rel="stylesheet" href="../frontend/styles/top.css">
+    <link rel="stylesheet" href="../frontend/styles/video.css">
+    <link rel="stylesheet" href="../frontend/styles/onsale.css">
+    <link rel="stylesheet" href="../frontend/styles/categories.css">
+    <link rel="stylesheet" href="../frontend/styles/footer.css">
+    <link rel="stylesheet" href="../frontend/styles/shortHistory.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="../frontend/logic/carousel.js"></script>
+    <script src="../frontend/logic/scrollHeader.js"></script>
+    <title>Document</title>
+</head>
+<body>
+     <div class="top">
+            <div class="logo"><img src="../frontend/images/logo.png"></div>
+            <div class="searchBar">
+                <input type="text" placeholder="Търсене на продукти...">
+                <button class="searchButton"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+            <div class="phones">
+                <div class="phone"><i class="fas fa-phone"></i> +359 123 456 789</div>
+                <div class="phone"><i class="fas fa-envelope"></i>
+            </div>
+        </div>
+    <div class="main-header">
+        <div class="first-header" id="firstHeader">
+            <div class="second-header">
+                <div class="section-buttons">
+                    <div class="dropdown">
+                        <button class="header-button">Техника<i class='fas fa-angle-down'></i></button>
+                        <div class="dropdown-content">
+                            <a href="../frontend/Pages/Smartphones.html">Смартфони</a>
+                            <a href="../frontend/Pages/Laptops.html">Лаптопи</a>
+                            <a href="../frontend/Pages/PC.html">Компютри</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="header-button">Дрехи<i class='fas fa-angle-down'></i></button>
+                        <div class="dropdown-content">
+                            <a href="#">Тениски</a>
+                            <a href="#">Обувки</a>
+                            <a href="#">Шапки</a>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="header-button">Хранителни стоки<i class='fas fa-angle-down'></i></button>
+                        <div class="dropdown-content">
+                            <a href="#">Месо</a>
+                            <a href="#">Плодове и зеленчуци</a>
+                            <a href="#">Хляб</a>
+                            <a href="#">Млечни продукти</a>
+                            <a href="#">Десерти</a>
+                            <a href="#">Напитки</a>
+                        </div>
+                    </div>
+                     <div class="dropdown">
+                        <button class="header-button">Аксесоарии<i class='fas fa-angle-down'></i></button>
+                        <div class="dropdown-content">
+                            <a href="#">Периферия</a>
+                            <a href="#">Козметика</a>
+                            <a href="#">Мода</a>
+                        </div>
+                    </div>
+                    <button class="header-button">Контакти</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="first-content">
+        <div class="darken-mode">
+       
+    </div>
+    <div class="responsive">
+        <video autoplay loop muted plays-inline class="back-video">
+            <source src="../frontend/images/second-try.mp4" type="video/mp4">
+        </video>
+        <div class="video-text">
+            <h1>Добре дошли в нашия онлайн магазин!</h1>
+            <p>Тук ще намерите всичко необходимо за вашия дом и офис.</p>
+            <button class="shop-now">Пазарувайте сега</button>
+
+        </div>
+    </div>
+    </section>
+    <section>
+        <div class="first-products">
+            <div class="products-title">
+            <h2>Най-продавани продукти</h2>
+            </div>
+
+            <div class="carousel-container">
+            <button class="carousel-button left" onclick="scrollCarousel(-1)">&#10094;</button>
+            <div class="product-list" id="productList">
+                <div class="product-item">
+                    <img src="../frontend/images/laptop.png" alt="Product 5">
+                    <h3>Lenovo ThinkBook</h3>
+                    <span class="price">Цена: 500 лв.</span>
+                </div>
+                <div class="product-item">
+                    <img src="../frontend/images/laptop.png" alt="Product 5">
+                    <h3>Lenovo ThinkBook</h3>
+                    <span class="price">Цена: 500 лв.</span>
+                </div>
+                <div class="product-item">
+                    <img src="../frontend/images/laptop.png" alt="Product 5">
+                    <h3>Lenovo ThinkBook</h3>
+                    <span class="price">Цена: 500 лв.</span>
+                </div>
+                <div class="product-item">
+                    <img src="../frontend/images/laptop.png" alt="Product 5">
+                    <h3>Lenovo ThinkBook</h3>
+                    <span class="price">Цена: 500 лв.</span>
+                </div>
+                <div class="product-item">
+                    <img src="../frontend/images/laptop.png" alt="Product 5">
+                    <h3>Lenovo ThinkBook</h3>
+                    <span class="price">Цена: 500 лв.</span>
+                </div>
+                <!-- Add more product-item divs if needed -->
+            </div>
+                <button class="carousel-button right" onclick="scrollCarousel(1)">&#10095;</button>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="categories">
+            <div class="category-title"><h2>Избери своя продукт</h2></div>
+
+            <!-- Category list wrapper (needed for flex row scroll) -->
+            <div class="category-list">
+            <div class="category-item">
+                <i class="fa-solid fa-desktop"></i>
+                <h3>Електроника</h3>
+            </div>
+            <div class="category-item">
+                <i class="fa-solid fa-shirt"></i>
+                <h3>Дрехи</h3>
+            </div>
+            <div class="category-item">
+                <i class="fa-solid fa-burger"></i>
+                <h3>Хранителни стоки</h3>
+            </div>
+            <div class="category-item">
+                <i class="fa-solid fa-headphones"></i>
+                <h3>Аксесоари</h3>
+            </div>
+            <!-- Add more if needed -->
+            </div>
+        </div>
+    </section>
+    <section class="about-section">
+        <div class="about-wrapper">
+            <div class="about-text">
+            <h2>Добре дошли в нашия магазин</h2>
+            <p>
+                Нашият уебсайт е създаден с мисъл за вас – място, където можете лесно да откриете продукти за вашия стил и ежедневие. 
+                От най-новата електроника до качествени дрехи и вкусна храна, ние предлагаме подбрани артикули на конкурентни цени.
+                <br><br>
+                Доверете се на нашата бърза доставка и отлично обслужване!
+            </p>
+            <a href="#contact" class="about-button">Научи повече</a>
+            </div>
+            <div class="about-image">
+            <img src="../frontend/images/shortstory.jpg" alt="Уебсайт снимка">
+            </div>
+        </div>
+    </section>
+
+
+   <footer class="footer">
+  	 <div class="container">
+  	 	<div class="row">
+  	 		<div class="footer-col">
+  	 			<h4>company</h4>
+  	 			<ul>
+  	 				<li><a href="#">about us</a></li>
+  	 				<li><a href="#">our services</a></li>
+  	 				<li><a href="#">privacy policy</a></li>
+  	 				<li><a href="#">affiliate program</a></li>
+  	 			</ul>
+  	 		</div>
+  	 		<div class="footer-col">
+  	 			<h4>get help</h4>
+  	 			<ul>
+  	 				<li><a href="#">FAQ</a></li>
+  	 				<li><a href="#">shipping</a></li>
+  	 				<li><a href="#">returns</a></li>
+  	 				<li><a href="#">order status</a></li>
+  	 				<li><a href="#">payment options</a></li>
+  	 			</ul>
+  	 		</div>
+  	 		<div class="footer-col">
+  	 			<h4>online shop</h4>
+  	 			<ul>
+  	 				<li><a href="#">watch</a></li>
+  	 				<li><a href="#">bag</a></li>
+  	 				<li><a href="#">shoes</a></li>
+  	 				<li><a href="#">dress</a></li>
+  	 			</ul>
+  	 		</div>
+  	 		<div class="footer-col">
+  	 			<h4>follow us</h4>
+  	 			<div class="social-links">
+  	 				<a href="#"><i class="fab fa-facebook-f"></i></a>
+  	 				<a href="#"><i class="fab fa-twitter"></i></a>
+  	 				<a href="#"><i class="fab fa-instagram"></i></a>
+  	 				<a href="#"><i class="fab fa-linkedin-in"></i></a>
+  	 			</div>
+  	 		</div>
+  	 	</div>
+  	 </div>
+  </footer>
+
+
+</body>
+</html>

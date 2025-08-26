@@ -1,0 +1,84 @@
+    .products-title {
+      background-color: aquamarine;
+      text-align: center;
+      font-size: 25px;
+      padding: 30px;
+    }
+
+    .carousel-container {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-list {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 40px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      padding: 70px 70px;
+      scroll-snap-type: x mandatory;
+      background-color: #ffffff;
+    }
+
+    .product-item {
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      width: 250px;
+      text-align: center;
+      padding: 20px;
+      flex: 0 0 auto;
+      scroll-snap-align: start;
+    }
+
+    .product-item:hover{
+      transform: scale(1.05);
+      transition: transform 0.3s ease;
+    }
+
+    .product-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .price {
+      font-weight: bold;
+      color: #000746;
+    }
+
+    .carousel-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 29, 194, 0.971);
+      border: none;
+      color: rgb(255, 255, 255);
+      padding: 20px;
+      cursor: pointer;
+      z-index: 1;
+      border-radius: 40%;
+    }
+
+    .carousel-button:hover {
+        background-color: #00012a;
+      color: yellow;
+    }
+
+    .carousel-button.left {
+      left: 10px;
+    }
+
+    .carousel-button.right {
+      right: 10px;
+    }
+
+    /* Hide scrollbar */
+    .product-list::-webkit-scrollbar {
+      display: none;
+    }
+    .product-list {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }

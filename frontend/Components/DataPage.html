@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Components/styles/DataPage.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Our Products</h1>
+  <div id="product-list">Loading products...</div>
+
+  <script>
+    fetch('http://localhost:3000/api/products')
+      .then(res => res.json())
+      .then(products => {
+        const container = document.getElementById('product-list');
+        container.innerHTML = ''; // Clear "Loading..." text
+
+        products.forEach(product => {
+          const div = document.createElement('div');
+          div.className = 'product';
+          div.innerHTML = `
+            <img src="${product.image}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <p>$${product.price.toFixed(2)}</p>
+            <p>${product.description}</p>
+          `;
+          container.appendChild(div);
+        });
+      })
+      .catch(err => {
+        document.getElementById('product-list').innerText = 'Failed to load products.';
+        console.error(err);
+      });
+  </script>
+</body>
+</html>
