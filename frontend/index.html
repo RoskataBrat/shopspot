@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../frontend/styles/index.css">
-    <link rel="stylesheet" href="../frontend/styles/top.css">
-    <link rel="stylesheet" href="../frontend/styles/video.css">
-    <link rel="stylesheet" href="../frontend/styles/onsale.css">
-    <link rel="stylesheet" href="../frontend/styles/categories.css">
-    <link rel="stylesheet" href="../frontend/styles/footer.css">
-    <link rel="stylesheet" href="../frontend/styles/shortHistory.css">
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/top.css">
+    <link rel="stylesheet" href="styles/video.css">
+    <link rel="stylesheet" href="styles/onsale.css">
+    <link rel="stylesheet" href="styles/categories.css">
+    <link rel="stylesheet" href="styles/footer.css">
+    <link rel="stylesheet" href="styles/shortHistory.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <script src="../frontend/logic/carousel.js"></script>
-    <script src="../frontend/logic/scrollHeader.js"></script>
-    <script src="../frontend/index.js"></script>
+    <script src="logic/carousel.js"></script>
+    <script src="logic/scrollHeader.js"></script>
+    <script src="index.js"></script>
     <title>Document</title>
 </head>
 <body>
      <div class="top">
-            <div class="logo"><img src="../frontend/images/logo.png"></div>
+            <div class="logo"><img src="images/logo.png"></div>
             <div class="searchBar">
                 <input type="text" id="searchInput" placeholder="Търсене на продукти..." />
                 <button class="searchButton"><i class="fas fa-search"></i></button>
@@ -27,10 +27,10 @@
             <div id="suggestions" class="suggestions"></div>
 
             <div class="login-container">
-                <button class="login-button" onclick="window.location.href='../frontend/Components/SignIn.html'">
+                <button class="login-button" onclick="window.location.href='Components/SignIn.html'">
                     <i class="fas fa-sign-in-alt"></i> Вход
                 </button>
-                <button class="login-button" onclick="window.location.href='../frontend/Components/SignUp.html'">
+                <button class="login-button" onclick="window.location.href='Components/SignUp.html'">
                     <i class="fas fa-user-plus"></i> Регистрация
                 </button>
             </div>
@@ -44,36 +44,36 @@
                     <div class="dropdown">
                         <button class="header-button">Техника<i class='fas fa-angle-down'></i></button>
                         <div class="dropdown-content">
-                            <a href="../frontend/Pages/Smartphones.html">Смартфони</a>
-                            <a href="../frontend/Pages/Laptops.html">Лаптопи</a>
-                            <a href="../frontend/Pages/PC.html">Компютри</a>
+                            <a href="Pages/Smartphones.html">Смартфони</a>
+                            <a href="Pages/Laptops.html">Лаптопи</a>
+                            <a href="Pages/PC.html">Компютри</a>
                         </div>
                     </div>
                     <div class="dropdown">
                         <button class="header-button">Дрехи<i class='fas fa-angle-down'></i></button>
                         <div class="dropdown-content">
-                            <a href="../frontend/Pages/T-Shirts.html">Тениски</a>
-                            <a href="../frontend/Pages/Shoes.html">Обувки</a>
-                            <a href="../frontend/Pages/Hats.html">Шапки</a>
+                            <a href="Pages/T-Shirts.html">Тениски</a>
+                            <a href="Pages/Shoes.html">Обувки</a>
+                            <a href="Pages/Hats.html">Шапки</a>
                         </div>
                     </div>
                     <div class="dropdown">
                         <button class="header-button">Хранителни стоки<i class='fas fa-angle-down'></i></button>
                         <div class="dropdown-content">
-                            <a href="../frontend/Pages/Meat.html">Месо</a>
-                            <a href="../frontend/Pages/Fruits&Vegetables.html">Плодове и зеленчуци</a>
-                            <a href="../frontend/Pages/Bread.html">Хляб</a>
-                            <a href="../frontend/Pages/Diary.html">Млечни продукти</a>
-                            <a href="../frontend/Pages/Sweets.html">Десерти</a>
-                            <a href="../frontend/Pages/Drinks.html">Напитки</a>
+                            <a href="Pages/Meat.html">Месо</a>
+                            <a href="Pages/Fruits&Vegetables.html">Плодове и зеленчуци</a>
+                            <a href="Pages/Bread.html">Хляб</a>
+                            <a href="Pages/Diary.html">Млечни продукти</a>
+                            <a href="Pages/Sweets.html">Десерти</a>
+                            <a href="Pages/Drinks.html">Напитки</a>
                         </div>
                     </div>
                      <div class="dropdown">
                         <button class="header-button">Аксесоарии<i class='fas fa-angle-down'></i></button>
                         <div class="dropdown-content">
-                            <a href="../frontend/Pages/Periphery.html">Периферия</a>
-                            <a href="../frontend/Pages/Cosmetics.html">Козметика</a>
-                            <a href="../frontend/Pages/Fashion.html">Мода</a>
+                            <a href="Pages/Periphery.html">Периферия</a>
+                            <a href="Pages/Cosmetics.html">Козметика</a>
+                            <a href="Pages/Fashion.html">Мода</a>
                         </div>
                     </div>
                     <button class="header-button">Контакти</button>
@@ -87,7 +87,7 @@
     </div>
     <div class="responsive">
         <video autoplay loop muted plays-inline class="back-video">
-            <source src="../frontend/images/second-try.mp4" type="video/mp4">
+            <source src="images/second-try.mp4" type="video/mp4">
         </video>
         <div class="video-text">
             <h1>Добре дошли в нашия онлайн магазин!</h1>
@@ -107,27 +107,27 @@
             <button class="carousel-button left" onclick="scrollCarousel(-1)">&#10094;</button>
             <div class="product-list" id="productList">
                 <div class="product-item">
-                    <img src="../frontend/images/laptop.png" alt="Product 5">
+                    <img src="images/laptop.png" alt="Product 5">
                     <h3>Lenovo ThinkBook</h3>
                     <span class="price">Цена: 500 лв.</span>
                 </div>
                 <div class="product-item">
-                    <img src="../frontend/images/laptop.png" alt="Product 5">
+                    <img src="images/laptop.png" alt="Product 5">
                     <h3>Lenovo ThinkBook</h3>
                     <span class="price">Цена: 500 лв.</span>
                 </div>
                 <div class="product-item">
-                    <img src="../frontend/images/laptop.png" alt="Product 5">
+                    <img src="images/laptop.png" alt="Product 5">
                     <h3>Lenovo ThinkBook</h3>
                     <span class="price">Цена: 500 лв.</span>
                 </div>
                 <div class="product-item">
-                    <img src="../frontend/images/laptop.png" alt="Product 5">
+                    <img src="images/laptop.png" alt="Product 5">
                     <h3>Lenovo ThinkBook</h3>
                     <span class="price">Цена: 500 лв.</span>
                 </div>
                 <div class="product-item">
-                    <img src="../frontend/images/laptop.png" alt="Product 5">
+                    <img src="images/laptop.png" alt="Product 5">
                     <h3>Lenovo ThinkBook</h3>
                     <span class="price">Цена: 500 лв.</span>
                 </div>
@@ -176,7 +176,7 @@
             <a href="#contact" class="about-button">Научи повече</a>
             </div>
             <div class="about-image">
-            <img src="../frontend/images/shortstory.jpg" alt="Уебсайт снимка">
+            <img src="images/shortstory.jpg" alt="Уебсайт снимка">
             </div>
         </div>
     </section>
@@ -225,9 +225,9 @@
   	 	</div>
   	 </div>
   </footer>
-  <script src="../frontend/logic/select_product.js"></script>
-  <script src="../frontend/logic/searchbar.js"></script>
-  <script src="../frontend/logic/profile-image.js"></script>
+  <script src="logic/select_product.js"></script>
+  <script src="logic/searchbar.js"></script>
+  <script src="logic/profile-image.js"></script>
 
 </body>
 </html>
