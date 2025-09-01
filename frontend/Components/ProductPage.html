@@ -122,7 +122,7 @@
 
   <!-- JS to fetch product data -->
   <script>
-  fetch('../../backend/data/products.json')
+  fetch('/frontend/products.json')
     .then(res => res.json())
     .then(products => {
       const urlParams = new URLSearchParams(window.location.search);
