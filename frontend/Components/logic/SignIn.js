@@ -5,7 +5,7 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
   const password = document.getElementById("loginPassword").value;
 
   try {
-    const res = await fetch("https://mongodb-e1oa-production.up.railway.app/api/auth/signin", {
+    const res = await fetch("http://localhost:5000/api/auth/signin", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
@@ -25,4 +25,3 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
     document.getElementById("loginMessage").textContent = "Възникна грешка при връзката със сървъра.";
   }
 });
-
