@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         try {
-            const res = await fetch("http://localhost:5000/api/orders", {
+            const res = await fetch(" https://online-shop-backend-p9t4.onrender.com/api/orders", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(orderData)
