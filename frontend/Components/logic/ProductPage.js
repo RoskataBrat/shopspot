@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const id = localStorage.getItem('selectedProductId');
   if (!id) return;
 
-  fetch(`/frontend/products.json`)
+  fetch(`../../products.json`)
     .then(res => res.json())
     .then(product => {
       document.querySelector('.product-image img').src = product.image;
