@@ -1,71 +1,47 @@
-const checkboxes = document.querySelectorAll('input[name="category"]');
-    const minPriceInput = document.getElementById('minPrice');
-    const maxPriceInput = document.getElementById('maxPrice');
-    const container = document.getElementById('productContainer');
+/*NEW UPGRADE*/
 
-    checkboxes.forEach(cb => cb.addEventListener('change', filterProducts));
-    minPriceInput.addEventListener('input', filterProducts);
-    maxPriceInput.addEventListener('input', filterProducts);
+function applyFilters() {
+  const selectedCategories = Array.from(document.querySelectorAll('input[name="category"]:checked'))
+    .map(cb => cb.value);
 
-    function filterProducts() {
-        const selectedCategories = Array.from(checkboxes)
-            .filter(cb => cb.checked)
-            .map(cb => cb.value);
+  const minPrice = parseFloat(document.getElementById('minPrice').value) || 0;
+  const maxPrice = parseFloat(document.getElementById('maxPrice').value) || Infinity;
 
-        const min = parseFloat(minPriceInput.value) || 0;
-        const max = parseFloat(maxPriceInput.value) || Infinity;
+  const products = document.querySelectorAll('.product');
 
-        const products = container.getElementsByClassName('product');
+  products.forEach(product => {
+    const category = product.getAttribute('data-category');
+    const price = parseFloat(product.getAttribute('data-price'));
 
-        Array.from(products).forEach(product => {
-            const category = product.getAttribute('data-category');
-            const price = parseFloat(product.getAttribute('data-price'));
+    const categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(category);
+    const priceMatch = price >= minPrice && price <= maxPrice;
 
-            const categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(category);
-            const priceMatch = price >= min && price <= max;
-
-            product.style.display = (categoryMatch && priceMatch) ? 'block' : 'none';
-        });
+    if (categoryMatch && priceMatch) {
+      product.style.display = '';
+    } else {
+      product.style.display = 'none';
     }
-
-    function sortAZ() {
-        const products = Array.from(container.getElementsByClassName('product'));
-        products.sort((a, b) => a.textContent.localeCompare(b.textContent));
-        container.innerHTML = '';
-        products.forEach(p => container.appendChild(p));
-    }
-
-    function sortZA() {
-        const products = Array.from(container.getElementsByClassName('product'));
-        products.sort((a, b) => b.textContent.localeCompare(a.textContent));
-        container.innerHTML = '';
-        products.forEach(p => container.appendChild(p));
-    }
-
-    // sidebar_products.js
-document.addEventListener("DOMContentLoaded", () => {
-  fetch("../data/products.json")
-    .then((res) => res.json())
-    .then((products) => renderProducts(products));
-});
-
-function renderProducts(products) {
-  const container = document.getElementById("productContainer");
-  container.innerHTML = ""; // Clear static HTML
-
-  products.forEach((product) => {
-    const productDiv = document.createElement("div");
-    productDiv.classList.add("product");
-
-    productDiv.innerHTML = `
-      <a href="../Components/ProductPage.html?id=${product.id}">
-        <img src="${product.image}" alt="${product.name}">
-      </a>
-      <h4>${product.name}</h4>
-      <h4>Цена: ${product.price} лв.</h4>
-      <p>${product.description}</p>
-    `;
-
-    container.appendChild(productDiv);
   });
+}
+
+function sortAZ() {
+  const container = document.getElementById('productContainer');
+  const products = Array.from(container.children);
+
+  products.sort((a, b) => {
+    return a.querySelector('h4').innerText.localeCompare(b.querySelector('h4').innerText, 'bg');
+  });
+
+  products.forEach(p => container.appendChild(p));
+}
+
+function sortZA() {
+  const container = document.getElementById('productContainer');
+  const products = Array.from(container.children);
+
+  products.sort((a, b) => {
+    return b.querySelector('h4').innerText.localeCompare(a.querySelector('h4').innerText, 'bg');
+  });
+
+  products.forEach(p => container.appendChild(p));
 }
