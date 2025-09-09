@@ -24,11 +24,12 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
 
         const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
         const cardNumber = document.getElementById("card-number").value.trim();
         const expiry = document.getElementById("expiry").value.trim();
         const cvv = document.getElementById("cvv").value.trim();
 
-        if (!name || !cardNumber || !expiry || !cvv) {
+        if (!name || !email || !cardNumber || !expiry || !cvv) {
             alert("Моля, попълнете всички полета.");
             return;
         }
@@ -36,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Prepare order data
         const orderData = {
             customerName: name,
+            customerEmail: email,
             items: cartItems,
             total
         };
@@ -49,7 +51,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const data = await res.json();
             if (data.success) {
+                // Build order details message
+                let orderDetails = `
+                    <p>✅ Благодарим Ви за поръчката, <strong>${orderData.customerName}</strong>!</p>
+                    <p>📧 Вашият имейл: <strong>${email}</strong></p>
+                    <p>🛒 Избраните продукти:</p>
+                    <ul>
+                        ${orderData.items.map(item => `<li>${item.name} - ${item.price} лв.</li>`).join("")}
+                    </ul>
+                    <p><strong>Общо:</strong> ${orderData.total.toFixed(2)} лв.</p>
+                `;
+
+                successMsg.innerHTML = orderDetails;
                 successMsg.style.display = "block";
+
 
                 // clear cart
                 localStorage.removeItem("cart");
@@ -57,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 setTimeout(() => {
                     window.location.href = "../index.html";
-                }, 3000);
+                }, 5000);
             } else {
                 alert("⚠️ Грешка при запазване на поръчката!");
             }

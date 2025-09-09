@@ -26,8 +26,11 @@
             </a>
 
             <form id="paymentForm" onsubmit="emailSend(); reset(); return false;">
-                <label for="name">Име на притежателя на картата</label>
+                <label for="name">Име и фамилия</label>
                 <input type="text" id="name" name="name" required />
+
+                <label for="name">Имейл адрес</label>
+                <input type="text" id="email" name="email" required />
 
                 <label for="card-number">Номер на карта</label>
                 <input type="text" id="card-number" name="card-number" maxlength="19" required />
