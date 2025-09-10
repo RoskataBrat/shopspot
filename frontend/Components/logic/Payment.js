@@ -42,6 +42,8 @@ document.addEventListener("DOMContentLoaded", () => {
             total
         };
 
+        
+
         try {
             const res = await fetch(" https://online-shop-backend-p9t4.onrender.com/api/orders", {
                 method: "POST",

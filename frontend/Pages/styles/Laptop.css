@@ -19,9 +19,9 @@
     top: 40px;
     width: 500px;
     height: 40px;
-    font-size: 16px;
+    font-size: 30px;
     margin-left: 600px;
-    background-color: #b5b5b5;
+    background-color: #848484;
     border-radius: 20px;
 }
 .searchBar input:hover{
@@ -40,7 +40,7 @@
 .searchBar button{
     position: absolute;
     right: 20px;
-    top: 10px;
+    top: 5px;
     padding: 15px 15px;
     background-color: #85afff;
     border: none;
@@ -49,6 +49,10 @@
 }
 .searchBar button .fas{
     color: #ffffff;
+    font-size: 20px;
+}
+.searchBar button .fas:hover{
+    color: #000000;
     font-size: 20px;
 }
 .searchBar button:hover{

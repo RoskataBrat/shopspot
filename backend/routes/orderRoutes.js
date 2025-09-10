@@ -27,17 +27,18 @@ router.post("/", async (req, res) => {
             .join("\n");
 
         // 4. Send email notification
-        await transporter.sendMail({
+                await transporter.sendMail({
             from: `"My Shop" <${process.env.GMAIL_USER}>`,
-            to: process.env.GMAIL_RECEIVER || process.env.GMAIL_USER, // recipient
+            to: process.env.GMAIL_RECEIVER || process.env.GMAIL_USER,
             subject: "⚠️ New Order Received",
-            text: `Customer: ${customerName}\n\nItems:\n${itemsList}\n\nTotal: ${total} лв.`,
+            text: `Customer: ${customerName}\nEmail: ${customerEmail}\n\nItems:\n${itemsList}\n\nTotal: ${total} лв.`,
             headers: {
                 "X-Priority": "1 (Highest)",
                 "X-MSMail-Priority": "High",
                 "Importance": "High"
             }
         });
+
 
         res.json({ success: true, message: "Order saved and email sent!" });
     } catch (err) {
