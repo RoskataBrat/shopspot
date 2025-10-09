@@ -85,3 +85,17 @@
 .category-list::-webkit-scrollbar {
       display: none;
     }
+.category-link {
+  text-decoration: none;
+  color: inherit;
+  display: block; /* Makes the link cover the full div area */
+}
+
+.category-item {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.category-item:hover {
+  transform: scale(1.03);
+}
