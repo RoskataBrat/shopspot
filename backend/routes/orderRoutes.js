@@ -7,9 +7,10 @@ const Order = require("../models/Order");
 router.post("/", async (req, res) => {
     try {
         const { customerName, items, total } = req.body;
+        const customerEmail = req.body.customerEmail || "No email provided";
 
         // 1. Save order to MongoDB
-        const newOrder = new Order({ customerName, items, total });
+        const newOrder = new Order({ customerName, customerEmail, items, total });
         await newOrder.save();
 
         // 2. Setup Nodemailer with Gmail
