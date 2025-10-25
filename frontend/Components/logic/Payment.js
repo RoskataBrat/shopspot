@@ -1,86 +1,72 @@
-document.addEventListener("DOMContentLoaded", () => { 
-    const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-    const summaryList = document.getElementById("summaryList");
-    const totalPriceEl = document.getElementById("totalPrice");
+document.addEventListener("DOMContentLoaded", () => {
+  const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+  const summaryList = document.getElementById("summaryList");
+  const totalPriceEl = document.getElementById("totalPrice");
 
-    let total = 0;
+  let total = 0;
 
-    // Show products on the left
-    cartItems.forEach(product => {
-        const li = document.createElement("li");
-        li.textContent = `${product.name} - ${product.price} лв.`;
-        summaryList.appendChild(li);
-        total += parseFloat(product.price);
-    });
+  // Show products in summary
+  cartItems.forEach(product => {
+    const li = document.createElement("li");
+    li.textContent = `${product.name} - ${product.price} лв.`;
+    summaryList.appendChild(li);
+    total += parseFloat(product.price);
+  });
 
-    totalPriceEl.innerHTML = `<strong>Общо:</strong> ${total.toFixed(2)} лв.`;
+  totalPriceEl.innerHTML = `<strong>Общо:</strong> ${total.toFixed(2)} лв.`;
 
+  // Payment form submit
+  const form = document.getElementById("paymentForm");
+  const successMsg = document.getElementById("successMessage");
 
-    // Payment form submit
-    const form = document.getElementById("paymentForm");
-    const successMsg = document.getElementById("successMessage");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-    form.addEventListener("submit", async (e) => {
-        e.preventDefault();
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const cardNumber = document.getElementById("card-number").value.trim();
+    const expiry = document.getElementById("expiry").value.trim();
+    const cvv = document.getElementById("cvv").value.trim();
 
-        const name = document.getElementById("name").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const cardNumber = document.getElementById("card-number").value.trim();
-        const expiry = document.getElementById("expiry").value.trim();
-        const cvv = document.getElementById("cvv").value.trim();
+    if (!name || !email || !cardNumber || !expiry || !cvv) {
+      alert("Моля, попълнете всички полета.");
+      return;
+    }
 
-        if (!name || !email || !cardNumber || !expiry || !cvv) {
-            alert("Моля, попълнете всички полета.");
-            return;
-        }
+    const orderData = {
+      customerName: name,
+      customerEmail: email,
+      items: cartItems,
+      total
+    };
 
-        // Prepare order data
-        const orderData = {
-            customerName: name,
-            customerEmail: email,
-            items: cartItems,
-            total
-        };
+    try {
+      const res = await fetch("http://localhost:5000/api/orders", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(orderData)
+      });
 
-        
+      const data = await res.json();
+      if (data.success) {
+        // ✅ Show confirmation message
+        successMsg.innerHTML = `<h3>✅ Order finished!</h3><p>Благодарим Ви, ${orderData.customerName}!</p><p>Ще бъдете пренасочени към началната страница след 5 секунди...</p>`;
+        successMsg.style.display = "block";
 
-        try {
-            const res = await fetch(" https://online-shop-backend-p9t4.onrender.com/api/orders", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(orderData)
-            });
+        // Clear cart
+        localStorage.removeItem("cart");
+        localStorage.removeItem("cartItems");
 
-            const data = await res.json();
-            if (data.success) {
-                // Build order details message
-                let orderDetails = `
-                    <p>✅ Благодарим Ви за поръчката, <strong>${orderData.customerName}</strong>!</p>
-                    <p>📧 Вашият имейл: <strong>${email}</strong></p>
-                    <p>🛒 Избраните продукти:</p>
-                    <ul>
-                        ${orderData.items.map(item => `<li>${item.name} - ${item.price} лв.</li>`).join("")}
-                    </ul>
-                    <p><strong>Общо:</strong> ${orderData.total.toFixed(2)} лв.</p>
-                `;
-
-                successMsg.innerHTML = orderDetails;
-                successMsg.style.display = "block";
-
-
-                // clear cart
-                localStorage.removeItem("cart");
-                localStorage.removeItem("cartItems");
-
-                setTimeout(() => {
-                    window.location.href = "../index.html";
-                }, 5000);
-            } else {
-                alert("⚠️ Грешка при запазване на поръчката!");
-            }
-        } catch (err) {
-            console.error("Error saving order:", err);
-            alert("⚠️ Сървърна грешка!");
-        }
-    });
+        // Redirect after delay
+        setTimeout(() => {
+          window.location.href = "../index.html";
+        }, 5000);
+      } else {
+        alert("⚠️ Грешка при запазване на поръчката!");
+      }
+    } catch (err) {
+      console.error("Error saving order:", err);
+      alert("⚠️ Сървърна грешка!");
+    }
+  });
 });
