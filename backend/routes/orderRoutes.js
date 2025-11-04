@@ -1,6 +1,6 @@
-import express from "express";
-import Order from "../models/Order.js";
-import { Resend } from "resend";
+const express = require("express");
+const Order = require("../models/Order");
+const { Resend } = require("resend");
 
 const router = express.Router();
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -26,15 +26,15 @@ router.post("/", async (req, res) => {
 
     await resend.emails.send({
       from: "Online Shop <onboarding@resend.dev>",
-      to: "ruslant.20b@gmail.com", // change this
+      to: "yourgmail@gmail.com",
       subject: "🛒 Нова поръчка в магазина",
       html: adminHTML,
     });
 
-    console.log("✅ Email sent via Resend API");
+    console.log("✅ Email sent to admin successfully!");
   } catch (error) {
-    console.error("❌ Order save/email error:", error);
+    console.error("❌ Error saving order or sending email:", error);
   }
 });
 
-export default router;
+module.exports = router;
