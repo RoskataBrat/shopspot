@@ -26,7 +26,7 @@ router.post("/", async (req, res) => {
 
     await resend.emails.send({
       from: "Online Shop <onboarding@resend.dev>",
-      to: "yourgmail@gmail.com",
+      to: "ruslant.20b@gmail.com",
       subject: "🛒 Нова поръчка в магазина",
       html: adminHTML,
     });
