@@ -1,62 +1,42 @@
-const express = require("express");
+import express from "express";
+import Order from "../models/Order.js";
+import { Resend } from "resend";
+
 const router = express.Router();
-const nodemailer = require("nodemailer");
-const Order = require("../models/Order");
+const resend = new Resend(process.env.RESEND_API_KEY);
 
-// Save new order + send email
 router.post("/", async (req, res) => {
-    try {
-        const { customerName, items, total } = req.body;
-        const customerEmail = req.body.customerEmail || "No email provided";
+  const { customerName, customerEmail, items, total } = req.body;
 
-        // 1. Save order to MongoDB
-        const newOrder = new Order({ customerName, customerEmail, items, total });
-        await newOrder.save();
+  try {
+    const newOrder = new Order({ customerName, customerEmail, items, total });
+    await newOrder.save();
 
-        // 2. Setup Nodemailer with Gmail
-        const transporter = nodemailer.createTransport({
-            service: "gmail",
-            auth: {
-                user: process.env.GMAIL_USER,  // your Gmail (from .env)
-                pass: process.env.GMAIL_PASS   // app password (not normal Gmail password)
-            }
-        });
+    // Respond to frontend first
+    res.json({ success: true, message: "Order finished successfully!" });
 
-        // 3. Format items into readable text
-        const itemsList = items
-            .map(p => `${p.name} - ${p.price} лв.`)
-            .join("\n");
+    // Admin email content
+    const adminHTML = `
+      <h2>🛒 Нова поръчка!</h2>
+      <p><strong>Име:</strong> ${customerName}</p>
+      <p><strong>Имейл:</strong> ${customerEmail}</p>
+      <ul>
+        ${items.map(i => `<li>${i.name} - ${i.price} лв.</li>`).join("")}
+      </ul>
+      <p><strong>Общо:</strong> ${total.toFixed(2)} лв.</p>
+    `;
 
-        // 4. Send email notification
-                await transporter.sendMail({
-            from: `"My Shop" <${process.env.GMAIL_USER}>`,
-            to: process.env.GMAIL_RECEIVER || process.env.GMAIL_USER,
-            subject: "⚠️ New Order Received",
-            text: `Customer: ${customerName}\nEmail: ${customerEmail}\n\nItems:\n${itemsList}\n\nTotal: ${total} лв.`,
-            headers: {
-                "X-Priority": "1 (Highest)",
-                "X-MSMail-Priority": "High",
-                "Importance": "High"
-            }
-        });
+    await resend.emails.send({
+      from: "Online Shop <onboarding@resend.dev>",
+      to: "yourgmail@gmail.com", // <-- put your real Gmail
+      subject: "🛒 Нова поръчка в магазина",
+      html: adminHTML,
+    });
 
-
-        res.json({ success: true, message: "Order saved and email sent!" });
-    } catch (err) {
-        console.error("Order save/email error:", err);
-        res.status(500).json({ success: false, message: err.message });
-    }
+    console.log("✅ Email sent to admin successfully!");
+  } catch (error) {
+    console.error("❌ Error saving order or sending email:", error);
+  }
 });
 
-// Get all orders (sorted newest first)
-router.get("/", async (req, res) => {
-    try {
-        const orders = await Order.find().sort({ createdAt: -1 });
-        res.json(orders);
-    } catch (err) {
-        res.status(500).json({ message: err.message });
-    }
-});
-
-module.exports = router;
-
+export default router;
