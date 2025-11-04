@@ -12,10 +12,8 @@ router.post("/", async (req, res) => {
     const newOrder = new Order({ customerName, customerEmail, items, total });
     await newOrder.save();
 
-    // Respond to frontend first
     res.json({ success: true, message: "Order finished successfully!" });
 
-    // Admin email content
     const adminHTML = `
       <h2>🛒 Нова поръчка!</h2>
       <p><strong>Име:</strong> ${customerName}</p>
@@ -28,14 +26,14 @@ router.post("/", async (req, res) => {
 
     await resend.emails.send({
       from: "Online Shop <onboarding@resend.dev>",
-      to: "yourgmail@gmail.com", // <-- put your real Gmail
+      to: "ruslant.20b@gmail.com", // change this
       subject: "🛒 Нова поръчка в магазина",
       html: adminHTML,
     });
 
-    console.log("✅ Email sent to admin successfully!");
+    console.log("✅ Email sent via Resend API");
   } catch (error) {
-    console.error("❌ Error saving order or sending email:", error);
+    console.error("❌ Order save/email error:", error);
   }
 });
 
