@@ -106,3 +106,94 @@ body{
 .dropdown:hover .dropdown-content {display: block;}
 
 
+/* ------------------ BASE STYLES ------------------ */
+
+/* Hamburger (hidden on desktop) */
+.hamburger {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: #000;
+    z-index: 3000;
+}
+
+/* Default desktop menu */
+.section-buttons {
+    transition: 0.4s ease;
+}
+
+/* ------------------ MOBILE MODE ------------------ */
+@media (max-width: 900px) {
+
+    .second-header {
+        justify-content: space-between;
+        width: 95%;
+        position: relative;
+    }
+
+    /* Hide menu at start */
+    .section-buttons {
+        display: none;
+        flex-direction: column;
+        background: #ffffff;
+        position: absolute;
+        top: 100px;
+        left: 0;
+        width: 100%;
+        padding: 10px 0;
+        box-shadow: 0px 4px 8px rgba(0,0,0,0.25);
+        z-index: 2000;
+    }
+
+    /* Show menu when toggled */
+    .section-buttons.show {
+        display: flex !important;
+    }
+
+    /* Smaller header buttons */
+    .header-button {
+        width: 85%;
+        font-size: 15px;
+        padding: 8px 15px;
+        text-align: left;
+        margin-left: 15px;
+    }
+
+    /* Dropdown container */
+    .dropdown {
+        width: 100%;
+        position: relative;
+    }
+
+    /* Dropdown content (opens right side) */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        left: 100%;     /* appears to the RIGHT */
+        top: 0;
+        background-color: #f8f8f8;
+        min-width: 180px;
+        border-radius: 5px;
+        padding: 5px 0;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        z-index: 3000;
+    }
+
+    /* Show dropdown on click */
+    .dropdown.show > .dropdown-content {
+        display: block;
+    }
+
+    /* Disable hover in mobile */
+    .dropdown:hover .dropdown-content {
+        display: none;
+    }
+
+    /* Show hamburger */
+    .hamburger {
+        display: block;
+    }
+}
+
+
+

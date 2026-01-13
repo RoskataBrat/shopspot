@@ -9,14 +9,11 @@ router.post("/", async (req, res) => {
   const { customerName, customerEmail, items, total } = req.body;
 
   try {
-    // 1️⃣ Save order in MongoDB
+    // 1️⃣ Save order
     const newOrder = new Order({ customerName, customerEmail, items, total });
     await newOrder.save();
 
-    // 2️⃣ Respond immediately to frontend
-    res.json({ success: true, message: "Order finished successfully!" });
-
-    // 3️⃣ Build email content
+    // 2️⃣ Build email
     const adminHTML = `
       <h2>🛒 Нова поръчка!</h2>
       <p><strong>Име:</strong> ${customerName}</p>
@@ -27,18 +24,23 @@ router.post("/", async (req, res) => {
       <p><strong>Общо:</strong> ${total.toFixed(2)} лв.</p>
     `;
 
-    // 4️⃣ Send email to admin (Resend API)
+    // 3️⃣ Send email
     await resend.emails.send({
-      from: "Online Shop <onboarding@resend.dev>", // or your verified domain
-      to: "ruslant.20b@gmail.com", // your admin email
+      from: "Online Shop <onboarding@resend.dev>",
+      to: "ruslant.20b@gmail.com",
       subject: "🛒 Нова поръчка в магазина",
       html: adminHTML,
     });
 
-    console.log("✅ Email sent to admin successfully!");
+    // 4️⃣ Respond ONLY after everything succeeds
+    res.json({ success: true, message: "Order finished successfully!" });
+
   } catch (error) {
-    console.error("❌ Error saving order or sending email:", error);
+    console.error("❌ Error:", error);
+
+    res.status(500).json({
+      success: false,
+      message: "Order failed. Please try again."
+    });
   }
 });
-
-module.exports = router;
